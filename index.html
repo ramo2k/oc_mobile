@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <title>Contrôle d'une porte d'aération d'une serre</title>
+</head>
+<body>
+    <h1>Contrôle d'une porte d'aération d'une serre</h1>
+    <div class="container">
+        <div class="left-column">
+            <p>Température ambiante : <strong><span id="output-temperature"></span></strong> °C</p>
+            <p>Distance porte : <strong><span id="output-distance"></span></strong> cm</p>
+            <p class="control-header"><strong><u>Contrôle:</u></strong></p>
+            <button class="btn" id="manuelle-btn">Manuelle</button>
+            <input type="number" id="input-pourcentage" value="" min="0" max="100">
+            <label for="input-pourcentage">%</label>
+            <p class="action-header"><strong><u>Action:</u></strong></p>
+            <div class="action-buttons">
+                <button class="btn" id="open-btn" onclick="action_post(true)">Ouvrir la porte</button>
+                <button class="btn" id="close-btn" onclick="action_post(false)">Fermer la porte</button>
+            </div>
+            <div class="graph-button">
+                <button class="btn" id="graph-btn">
+                    <a href="/chart.html" style="text-decoration: none; color: white;">Graphique de températures et
+                        <br>de pourcentages par période
+                    </a>
+                </button>
+            </div>
+            <p class="alert-header">
+                <strong><u>Alerte:</u></strong> 
+                <span style="color: red;" id="ouput-alert"></span>
+            </p>
+        </div>
+        <div class="right-column">
+            <div class="progress" id="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="percentage-info">
+                <p>Pourcentage d'ouverture de la porte :</p>
+                <span class="output-door-pct" id="output-door-pct">70</span>%
+            </div>
+        </div>
+
+    </div>
+    <script src="/script.js"></script>
+</body>
+
+</html>

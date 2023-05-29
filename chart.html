@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment/dist/chartjs-adapter-moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background-color: white;
+            padding: 100px 20px 20px 20px; /* top right bottom left */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .buttons,
+        .date-inputs {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #alert {
+            font-weight: bold;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #alertContainer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            animation: spin 2s linear infinite;
+        }
+
+        .fas {
+            color: #3498db;
+        }
+
+        .fas.fa-check-circle {
+            color: green;
+        }
+
+        .fas.fa-times-circle {
+            color: red;
+        }
+
+        .chart-container {
+            width: 700px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="alertContainer">
+            <span id="alert"></span>
+            <i id="alertIcon"></i>
+        </div>
+        Année: <input type="number" id="year" value="2023">
+        <div class="date-inputs">
+            Date de départ: <input type="date" id="startDate">
+            Date de fin: <input type="date" id="endDate">
+        </div>
+        <div class="buttons">
+            <button onclick="clearDates()">Supprimer les dates</button>
+            <button onclick="fetchData()">Chercher les données</button>
+            <button onclick="processData()">Appliquer</button>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <script src="/chart-fixed.js"></script>
+    </div>
+</body>
+
+</html>
